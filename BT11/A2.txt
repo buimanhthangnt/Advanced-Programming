@@ -1,0 +1,65 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\thangbm>cd "d:\Studying\LTNC Draft"
+
+C:\Users\thangbm>d:
+
+d:\Studying\LTNC Draft>cd BT11
+
+d:\Studying\LTNC Draft\BT11>g++ -g Divide.cpp -o Divide
+
+d:\Studying\LTNC Draft\BT11>gdb Divide
+GNU gdb (GDB) 7.8.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-w64-mingw32".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from Divide...done.
+(gdb) r
+Starting program: d:\Studying\LTNC Draft\BT11\Divide.exe
+[New Thread 4724.0x14d0]
+[New Thread 4724.0xdcc]
+2
+Program received signal SIGFPE, Arithmetic exception.
+0x00000000004015a8 in divide (a=3, b=0) at Divide.cpp:17
+17              return a/b;
+(gdb) l
+12              cout << divide(x,y);
+13              return 0;
+14      }
+15
+16      int divide(int a, int b) {
+17              return a/b;
+18      }(gdb) where
+#0  0x00000000004015a8 in divide (a=3, b=0) at Divide.cpp:17
+#1  0x0000000000401581 in main () at Divide.cpp:12
+(gdb) p a
+$1 = 3
+(gdb) p b
+$2 = 0
+(gdb) p x
+No symbol "x" in current context.
+(gdb) up
+#1  0x0000000000401581 in main () at Divide.cpp:12
+12              cout << divide(x,y);
+(gdb) p x
+$3 = 3
+(gdb) down
+#0  0x00000000004015a8 in divide (a=3, b=0) at Divide.cpp:17
+17              return a/b;
+(gdb) q
+A debugging session is active.
+
+        Inferior 1 [process 4724] will be killed.
+
+Quit anyway? (y or n) y

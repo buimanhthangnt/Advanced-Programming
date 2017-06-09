@@ -1,0 +1,55 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+D:\Studying\LTNC Draft\BT11>g++ -g crash.cpp -o crash
+
+D:\Studying\LTNC Draft\BT11>gdb crash
+GNU gdb (GDB) 7.8.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-w64-mingw32".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from crash...done.
+(gdb) r
+Starting program: D:\Studying\LTNC Draft\BT11\crash.exe
+[New Thread 3840.0x2044]
+[New Thread 3840.0x20bc]
+10
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004015be in setint (ip=0x1, i=10) at crash.cpp:18
+18              *ip = i;
+(gdb) where
+#0  0x00000000004015be in setint (ip=0x1, i=10) at crash.cpp:18
+#1  0x000000000040157f in main () at crash.cpp:12
+(gdb) b main
+Breakpoint 1 at 0x40153d: file crash.cpp, line 9.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: D:\Studying\LTNC Draft\BT11\crash.exe
+[New Thread 3564.0x21fc]
+[New Thread 3564.0x860]
+
+Breakpoint 1, main () at crash.cpp:9
+9               setint(&a,10);
+(gdb) n
+10              cout << a << endl;
+(gdb) n
+100x000000000044d350 in std::ostream::operator<<(std::ostream& (*)(std::ostream&)) ()
+(gdb) n
+Single stepping until exit from function _ZNSolsEPFRSoS_E,
+which has no line number information.
+0x000000000046cf70 in std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&) ()
+(gdb) n
+Single stepping until exit from function _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_,
+which has no line number information.

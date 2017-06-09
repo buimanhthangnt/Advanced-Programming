@@ -1,0 +1,68 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+D:\Studying\LTNC Draft\BT11>g++ -g A5.cpp -o A5
+
+D:\Studying\LTNC Draft\BT11>gdb A5
+GNU gdb (GDB) 7.8.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-w64-mingw32".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from A5...done.
+(gdb) r
+Starting program: D:\Studying\LTNC Draft\BT11\A5.exe
+[New Thread 8396.0x1eb4]
+[New Thread 8396.0xed8]
+warning: Critical error detected c0000374
+
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x00007ffa4662e69c in ntdll!RtlpNtMakeTemporaryKey () from C:\WINDOWS\SYSTEM32\ntdll.dll
+(gdb) b main
+Breakpoint 1 at 0x40153d: file A5.cpp, line 8.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: D:\Studying\LTNC Draft\BT11\A5.exe
+[New Thread 1532.0xa2c]
+[New Thread 1532.0x20]
+
+Breakpoint 1, main () at A5.cpp:8
+8               a = 12;
+(gdb) n
+9               p = &a;
+(gdb)
+10              r = p;
+(gdb)
+11              delete p;
+(gdb)
+warning: Critical error detected c0000374
+
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x00007ffa4662e69c in ntdll!RtlpNtMakeTemporaryKey () from C:\WINDOWS\SYSTEM32\ntdll.dll
+(gdb)
+Single stepping until exit from function ntdll!RtlpNtMakeTemporaryKey,
+which has no line number information.
+gdb: unknown target exception 0xc0000374 at 0x7ffa4662e6dc
+
+Program received signal ?, Unknown signal.
+0x00007ffa4662e6dc in ntdll!RtlpNtMakeTemporaryKey () from C:\WINDOWS\SYSTEM32\ntdll.dll
+(gdb) n
+Single stepping until exit from function ntdll!RtlpNtMakeTemporaryKey,
+which has no line number information.
+[Thread 1532.0x20 exited with code 3221226356]
+[Inferior 1 (process 1532) exited with code 030000001564]
+(gdb)
+
+Chuong trinh bi loi o dong thu 12, do truy cap vao vung bo nho con tro da bi xoa tro toi

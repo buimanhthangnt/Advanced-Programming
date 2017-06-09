@@ -1,0 +1,82 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+D:\Studying\LTNC Draft\BT11>g++ -g A4.cpp -o A4
+
+D:\Studying\LTNC Draft\BT11>gdb A4
+GNU gdb (GDB) 7.8.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-w64-mingw32".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from A4...done.
+(gdb) r
+Starting program: D:\Studying\LTNC Draft\BT11\A4.exe
+[New Thread 6292.0x3ac]
+[New Thread 6292.0x1f58]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000700000006 in ?? ()
+(gdb) where
+#0  0x0000000700000006 in ?? ()
+Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+(gdb) l
+1       //Em viet mot chuong trinh co loi tran mang
+2
+3       #include <iostream>
+4
+5       using namespace std;
+6
+7       int main()
+8       {
+9               int a[2];
+10              for (int i=0; i<100; i++) {
+(gdb) b 11
+Breakpoint 1 at 0x401546: file A4.cpp, line 11.
+(gdb) b 12
+Breakpoint 2 at 0x40155c: file A4.cpp, line 12.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: D:\Studying\LTNC Draft\BT11\A4.exe
+[New Thread 7424.0x47c]
+[New Thread 7424.0x95c]
+
+Breakpoint 1, main () at A4.cpp:11
+11                      a[i] = i;
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at A4.cpp:11
+11                      a[i] = i;
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at A4.cpp:11
+11                      a[i] = i;
+(gdb) d 1
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at A4.cpp:14
+14              return 0;
+(gdb) c
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000700000006 in ?? ()
+(gdb)
+
+
+Khi chay den breakpoint 1 o dong 11, chuong trinh chua bi crash
+sau khi xoa breakpoint 1, chay tiep chuong trinh den breakpoint 2 o dong 12 thi bi crash
+Chung to chuong bi loi o dong 12, loi truy cap vao vung bo nho khong cho phep

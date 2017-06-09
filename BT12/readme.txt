@@ -1,0 +1,1 @@
+Em lam them bai A6 va A8 de bu diem cho bai lan truoc
